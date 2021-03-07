@@ -16,6 +16,10 @@ int main(int argc, char *argv[]){
   }
   BiblioH* b1 = charger_n_entrees(argv[1], atoi(argv[2]));
   enregistrer_biblio(b1, "Biblio_rangee.txt");
+  printf("il y a %d livre(s) dans b\n", b1->nE);
+  afficher_biblio(b1);
+  liberer_biblio(b1);
+
 
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
@@ -24,7 +28,7 @@ int main(int argc, char *argv[]){
   inserer(b, l->num, l->titre, l->auteur); // on crée une copie de ce livre il faut libérer l aussi
   inserer(b, 4561, "un_autre_titre", l->auteur);
   inserer(b, 41235, "title", "author");
-
+  printf("il y a %d livre(s) dans b\n", b->nE);
   liberer_livre(l);
   liberer_biblio(b);
 
