@@ -6,7 +6,7 @@
 #define TAILLE_M 20
 
 BiblioH* charger_n_entrees(char* nomfic, int n){
-  BiblioH* resultat=creer_biblio(20);
+  BiblioH* resultat=creer_biblio(n);
   char ligne[256];
   int i=0;
   char num[30];
@@ -34,21 +34,18 @@ BiblioH* charger_n_entrees(char* nomfic, int n){
        strncat(num, &ligne[j], 1);
        j++;
     }
-    printf("numero: %s\n", num);
 
     j++;
     while (ligne[j]!=' '){
       strncat(titre, &ligne[j], 1);
       j++;
     }
-    printf("titre: %s\n", titre);
 
     j++;
     while (ligne[j]!=' '){
       strncat(auteur, &ligne[j], 1);
       j++;
     }
-    printf("auteur: %s\n", auteur);
 
     i++;
     inserer(resultat, atoi(num),titre,auteur);
@@ -74,10 +71,6 @@ void enregistrer_biblio(BiblioH *b, char* nomfic){
     cour=(b->T)[i];
     while(cour){
       fprintf(fic,"%d %s %s\n",cour->num,cour->titre,cour->auteur);
-      if(!cour->suivant){
-        fclose(fic);
-        return;
-      }
       cour=cour->suivant;
     }
   }
